@@ -73,9 +73,7 @@ githubStar = iframe_
     []
 -----------------------------------------------------------------------------
 appView :: Model -> View Model Action
-appView m =
-  div_
-  []
+appView m = vfrag
   [ githubStar
   , div_
     [ class_ "container"
