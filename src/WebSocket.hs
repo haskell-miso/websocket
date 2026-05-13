@@ -146,8 +146,7 @@ viewModel m =
   [ className "websocket-box" ]
   [ div_
     [ class_ "websocket-header" ]
-    [ div_
-      []
+    [ vfrag
       [ span_
         [ classList_
           [ ("websocket-status", True)
