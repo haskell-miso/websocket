@@ -83,7 +83,7 @@ boxId = lens _boxId $ \r x -> r { _boxId = x }
 emptyModel :: Int -> Model
 emptyModel = Model mempty [] emptyWebSocket False [] True
 -----------------------------------------------------------------------------
-websocketComponent :: Int -> Component parent Model Action
+websocketComponent :: Int -> Component parent props Model Action
 websocketComponent box = component (emptyModel box) updateModel viewModel
   where
     updateModel = \case
@@ -140,8 +140,8 @@ websocketComponent box = component (emptyModel box) updateModel viewModel
         msg .= ""
         received .= []
 -----------------------------------------------------------------------------
-viewModel :: Model -> View Model Action
-viewModel m =
+viewModel :: props -> Model -> View Model Action
+viewModel _ m =
   div_
   [ className "websocket-box" ]
   [ div_
@@ -232,7 +232,7 @@ viewModel m =
       else messageHeader (m ^. received)
     ]
 -----------------------------------------------------------------------------
-messageHeader :: [Message] -> [ View model action ]
+messageHeader :: [Message] -> [View model action]
 messageHeader messages = concat
   [ 
     [ div_
