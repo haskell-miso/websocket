@@ -60,7 +60,7 @@ app = (component emptyModel update_ appView)
      update_ NoOp =
        pure ()
 -----------------------------------------------------------------------------
-githubStar :: View model action
+githubStar :: View context model action
 githubStar = iframe_
     [ title_ "GitHub"
     , height_ "30"
@@ -72,8 +72,8 @@ githubStar = iframe_
     ]
     []
 -----------------------------------------------------------------------------
-appView :: props -> Model -> View Model Action
-appView _ m = vfrag
+appView :: Eq context => context -> props -> Model -> View context Model Action
+appView _ _ m = vfrag
   [ githubStar
   , div_
     [ class_ "container"
