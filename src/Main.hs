@@ -72,7 +72,7 @@ githubStar = iframe_
     ]
     []
 -----------------------------------------------------------------------------
-appView :: Eq context => context -> props -> Model -> View context props Model Action
+appView :: Eq context => Model -> View context props Model Action
 appView m = vfrag
   [ githubStar
   , div_
