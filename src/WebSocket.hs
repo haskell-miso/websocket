@@ -140,8 +140,8 @@ websocketComponent box = component (emptyModel box) updateModel viewModel
         msg .= ""
         received .= []
 -----------------------------------------------------------------------------
-viewModel :: context -> props -> Model -> View context Model Action
-viewModel _ _ m =
+viewModel :: Model -> View context props Model Action
+viewModel m =
   div_
   [ className "websocket-box" ]
   [ div_
@@ -232,7 +232,7 @@ viewModel _ _ m =
       else messageHeader (m ^. received)
     ]
 -----------------------------------------------------------------------------
-messageHeader :: [Message] -> [View context model action]
+messageHeader :: [Message] -> [View context props model action]
 messageHeader messages = concat
   [ 
     [ div_
